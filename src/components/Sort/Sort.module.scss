@@ -1,0 +1,66 @@
+.sort {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.sortLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sortDesc {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.sortTrigger {
+  font-weight: 400;
+  border: none;
+  border-bottom: 1px dashed #fe5f1e;
+  color: #fe5f1e;
+  background-color: white;
+  cursor: pointer;
+}
+
+.sortIcon {
+  height: 6px;
+  width: 10px;
+  cursor: pointer;
+}
+
+.sortList {
+  position: absolute;
+  top: 30px;
+  right: 0px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  max-width: 150px;
+  display: none;
+  flex-direction: column;
+  padding: 10px 0px;
+  background-color: white;
+}
+
+.visible {
+  display: flex;
+}
+
+.sortBtn {
+  border: none;
+  background-color: white;
+
+  cursor: pointer;
+  font-size: 14px;
+  color: #000000;
+
+  // &:hover .sortOption {
+  //   background: rgba(254, 95, 30, 0.05);
+  // }
+}
+
+.sortOption {
+  padding: 10px 22px 10px 14px;
+}

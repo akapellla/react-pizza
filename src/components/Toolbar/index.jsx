@@ -1,4 +1,7 @@
 import styles from "./Toolbar.module.scss";
+
+import Sort from "../Sort";
+
 import React from "react";
 
 const Toolbar = () => {
@@ -24,29 +27,7 @@ const Toolbar = () => {
           })}
         </ul>
       </nav>
-
-      <div className={`${styles.sort}`}>
-        <div className={`${styles.sortLabel}`}>
-          <img className={`${styles.sortIcon}`} src="/icons/sortIcon.svg" alt="" />
-          <span className={`${styles.sortDesc}`}>Сортировка по:</span>
-        </div>
-
-        <button
-          className={`${styles.sortTrigger}`}
-          type="button"
-          aria-haspopup="listbox"
-          aria-expanded="true"
-          aria-controls="sort-list"
-        >
-          популярности
-        </button>
-
-        <ul className="sort__list">
-          <li className="sort__option">популярности</li>
-          <li className="sort__option">цене</li>
-          <li className="sort__option">алфавиту</li>
-        </ul>
-      </div>
+      <Sort />
     </section>
   );
 };
