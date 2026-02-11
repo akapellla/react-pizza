@@ -3,16 +3,36 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul {
+  list-style: none;
 }
 
 .wrapper {
   background-color: #ffdf8c;
   padding: 45px;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .container {
-  background-color: #ffff;
+  max-width: 1340px;
+  margin: 0 auto;
+}
+
+.content {
+  background: #fff;
   border-radius: 10px;
   padding: 50px 60px;
+}
+
+.cards {
+  display: flex;
+  gap: 33px;
+  flex-wrap: wrap;
 }

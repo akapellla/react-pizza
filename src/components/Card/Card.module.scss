@@ -1,0 +1,129 @@
+.card {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 280px;
+}
+
+.pizzaInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+}
+.pizzaImg {
+  max-width: 280px;
+  max-height: 280px;
+}
+.pizzaInfo span {
+  font-weight: 800;
+  font-size: 20px;
+  margin-bottom: 22px;
+}
+
+.pizzaSettings {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  padding: 7px 5px;
+  align-self: stretch;
+}
+
+.doughSettings,
+.sizeSettings {
+  display: flex;
+  gap: 5px;
+}
+
+.sizesLi {
+  display: flex;
+  flex: 1;
+}
+
+.settingsButton {
+  border: none;
+  color: #2c2c2c;
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 20%;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  flex: 1;
+  transition: opacity 0.15s ease-in-out;
+
+  &:hover {
+    opacity: 100%;
+    color: #2c2c2c;
+  }
+}
+
+.pizzaBottomDesc {
+  margin-top: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  align-self: stretch;
+}
+.pizzaBottomDesc p {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.pizzaBottomDesc button {
+  display: flex;
+  border: 1px solid #eb5a1e;
+  background-color: white;
+  border-radius: 30px;
+  color: #eb5a1e;
+  padding: 14px 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  align-items: center;
+
+  &:hover {
+    background-color: #eb5a1e;
+    color: white;
+
+    .count {
+      background-color: white;
+      color: #eb5a1e;
+    }
+
+    .plusSvg {
+      fill: white;
+    }
+  }
+}
+
+.count {
+  max-width: 22px;
+  max-height: 22px;
+  color: white;
+  padding: 7px 5px;
+  background-color: #eb5a1e;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+  justify-content: center;
+}
+
+.plusSvg {
+  fill: #eb5a1e;
+  margin-right: 8px;
+}
+
+.active {
+  background-color: white;
+  opacity: 100%;
+  color: #2c2c2c;
+}
