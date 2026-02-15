@@ -35,4 +35,11 @@ ul {
   display: flex;
   gap: 33px;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+@media screen and (max-width: 816px) {
+  .cards {
+    justify-content: center;
+  }
 }

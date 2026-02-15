@@ -17,7 +17,7 @@ const Toolbar = () => {
             return (
               <li key={name} className={styles.categoriesItem}>
                 <button
-                  className={`${styles.categoriesBtn} ${activeIndex === i && styles.active}`}
+                  className={`${styles.categoriesBtn} ${activeIndex === i ? styles.active : ""}`}
                   onClick={() => setActiveIndex(i)}
                 >
                   {name}

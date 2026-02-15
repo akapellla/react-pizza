@@ -3,7 +3,15 @@ import styles from "./Sort.module.scss";
 import React from "react";
 
 const Sort = () => {
+  const sortType = ["популярности", "цене", "алфавиту"];
+
   const [isVisible, setIsVisible] = React.useState(false);
+  const [activeTypeIndex, setActiveTypeIndex] = React.useState(0);
+
+  const onChangeType = (index) => {
+    setActiveTypeIndex(index);
+    setIsVisible(false);
+  };
 
   return (
     <div className={`${styles.sort}`}>
@@ -20,19 +28,18 @@ const Sort = () => {
         aria-controls="sort-list"
         onClick={() => setIsVisible((prev) => !prev)}
       >
-        популярности
+        {sortType[activeTypeIndex]}
       </button>
 
-      <ul className={`${styles.sortList} ${isVisible && styles.visible}`}>
-        <li className={styles.sortOption}>
-          <button className={styles.sortBtn}>популярности</button>
-        </li>
-        <li className={styles.sortOption}>
-          <button className={styles.sortBtn}>по цене</button>
-        </li>
-        <li className={styles.sortOption}>
-          <button className={styles.sortBtn}>по алфавиту</button>
-        </li>
+      <ul className={`${styles.sortList} ${isVisible ? styles.visible : ""}`}>
+        {sortType.map((value, index) => (
+          <li
+            className={`${styles.sortOption} ${activeTypeIndex === index ? styles.active : ""}`}
+            onClick={() => onChangeType(index)}
+          >
+            <button className={styles.sortBtn}>{value}</button>
+          </li>
+        ))}
       </ul>
     </div>
   );

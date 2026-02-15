@@ -17,7 +17,7 @@ const Card = ({ title, imageUrl, price, sizes, types }) => {
         <div className={`${styles.doughSettings}`}>
           {types.map((typeId, index) => (
             <button
-              className={`${styles.settingsButton} ${activeType === typeId && styles.active}`}
+              className={`${styles.settingsButton} ${activeType === typeId ? styles.active : ""}`}
               onClick={() => setActiveType(typeId)}
             >
               {typeNames[typeId]}
@@ -30,7 +30,7 @@ const Card = ({ title, imageUrl, price, sizes, types }) => {
             return (
               <li key={value} className={styles.sizesLi}>
                 <button
-                  className={`${styles.settingsButton} ${activeSize === index && styles.active}`}
+                  className={`${styles.settingsButton} ${activeSize === index ? styles.active : ""}`}
                   onClick={() => setActiveSize(index)}
                 >
                   {value} см.
