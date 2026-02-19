@@ -4,11 +4,15 @@ import Sort from "../Sort";
 
 import React from "react";
 
-const Toolbar = () => {
-  const [activeIndex, setActiveIndex] = React.useState(0);
-
+const Toolbar = ({
+  sortDirection,
+  setSortDirection,
+  activeCategoryIndex,
+  setActiveCategoryIndex,
+  activeTypeSort,
+  setActiveTypeSort,
+}) => {
   const categories = ["Все", "Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые"];
-
   return (
     <section className={styles.toolbar}>
       <nav className={styles.categories}>
@@ -17,8 +21,8 @@ const Toolbar = () => {
             return (
               <li key={name} className={styles.categoriesItem}>
                 <button
-                  className={`${styles.categoriesBtn} ${activeIndex === i ? styles.active : ""}`}
-                  onClick={() => setActiveIndex(i)}
+                  className={`${styles.categoriesBtn} ${activeCategoryIndex === i ? styles.active : ""}`}
+                  onClick={() => setActiveCategoryIndex(i)}
                 >
                   {name}
                 </button>
@@ -27,7 +31,12 @@ const Toolbar = () => {
           })}
         </ul>
       </nav>
-      <Sort />
+      <Sort
+        activeTypeSort={activeTypeSort}
+        setActiveTypeSort={setActiveTypeSort}
+        sortDirection={sortDirection}
+        setSortDirection={setSortDirection}
+      />
     </section>
   );
 };

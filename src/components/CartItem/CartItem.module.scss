@@ -1,0 +1,103 @@
+.itemSec {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 140px 120px 40px;
+  column-gap: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #f4f4f4;
+  grid-template-areas: "info counter price close";
+
+  button {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+  }
+  .itemInfo {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    min-width: 0;
+
+    img {
+      max-width: 80px;
+      max-height: 80px;
+    }
+
+    .itemInfoDesc {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      h2 {
+        font-size: 22px;
+      }
+      p {
+        font-size: 18px;
+        color: #8d8d8d;
+      }
+    }
+  }
+  .itemCounter {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      font-size: 22px;
+      font-weight: 700;
+    }
+  }
+
+  .itemPrice {
+    justify-self: end;
+    p {
+      font-size: 22px;
+      font-weight: 700;
+    }
+  }
+  .itemClose {
+    justify-self: end;
+  }
+}
+
+.itemInfo {
+  grid-area: info;
+  min-width: 0;
+}
+.itemCounter {
+  grid-area: counter;
+  display: flex;
+  justify-content: center;
+}
+.itemPrice {
+  grid-area: price;
+  justify-self: end;
+}
+.itemClose {
+  grid-area: close;
+  justify-self: end;
+}
+
+@media (max-width: 808px) {
+  .itemSec {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "info close"
+      "counter price";
+    row-gap: 14px;
+    column-gap: 16px;
+    align-items: start;
+  }
+
+  .itemCounter {
+    justify-content: flex-start;
+  }
+  .itemPrice {
+    justify-self: end;
+  }
+  .itemClose {
+    align-self: start;
+  } /* крестик наверху */
+}

@@ -1,0 +1,142 @@
+.cartContainer {
+  display: flex;
+
+  // margin: 94px 151px 131px 228px;
+  margin: 94px auto 131px;
+  max-width: 821px;
+  flex-direction: column;
+  padding: 0 16px;
+}
+
+// .emptyCartContainer {
+//   //обернуть section для пустой корзины
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   margin-bottom: 25px;
+// }
+
+.cartItems {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.cartTitle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+
+  .leftCartTitle {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 17px;
+
+    h1 {
+      font-size: 32px;
+    }
+  }
+
+  .rightCartTitle {
+    button {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      border: none;
+      background-color: white;
+      color: #b6b6b6;
+      cursor: pointer;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+.emptyTitle {
+  margin-top: 100px;
+  margin-bottom: 10px;
+}
+
+.emptyDesc {
+  text-align: center;
+  max-width: 547px;
+  color: #777777;
+}
+
+.emptyImg {
+  max-width: 300px;
+  max-height: 255px;
+  margin-top: 47px;
+  margin-bottom: 74px;
+}
+.emptyButton {
+  max-width: 210px;
+  background-color: #282828;
+  border-radius: 30px;
+  padding: 15px 30px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.cartDesc {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  gap: 40px;
+
+  .cartBotDesc,
+  .cartTopDesc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cartTopDesc {
+    font-size: 22px;
+
+    p {
+      span {
+        font-weight: 700;
+      }
+    }
+
+    .priceBlock {
+      .cartPrice {
+        color: #fe5f1e;
+      }
+    }
+  }
+}
+
+.backBtn,
+.confirmBtn {
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  padding: 16px 31px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.backBtn {
+  background-color: white;
+  color: #d3d3d3;
+  border: 1px solid #d3d3d3;
+}
+
+.confirmBtn {
+  border: none;
+  background-color: #fe5f1e;
+  color: white;
+}

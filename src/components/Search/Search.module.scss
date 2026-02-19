@@ -1,0 +1,25 @@
+.searchBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 12px 20px;
+  border-radius: 15px;
+  border: 1px solid rgb(156, 156, 156);
+
+  svg {
+    max-width: 20px;
+    max-height: 20px;
+    color: rgb(156, 156, 156);
+  }
+}
+
+.input {
+  width: 300px;
+  outline: none;
+  border: none;
+  &:focus {
+    border-color: rgb(68, 68, 67);
+    outline: none;
+  }
+}

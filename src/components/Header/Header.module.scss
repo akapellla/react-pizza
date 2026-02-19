@@ -2,42 +2,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 35px;
+  flex-wrap: wrap;
+
+  padding-bottom: 40px; // расстояние ДО линии (как раньше hr + margin-bottom)
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2); // вместо hr (opacity 20%)
+
+  @media (max-width: 477px) {
+    flex-direction: column;
+  }
 }
 
-.cart {
-  background-color: #fe5f1e;
-  padding: 15px 20px;
-  border-radius: 30px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.cartLink {
+.leftHeader {
   display: flex;
   align-items: center;
-  color: white;
-}
-
-.price {
-  font-weight: 700;
-}
-
-.divider {
-  height: 25px;
-  margin: 0 13px;
-  border-right: 1px solid rgba(255, 255, 255, 0.4);
-}
-
-.cartIcon {
-  margin-right: 8px;
-}
-
-.count {
-  font-weight: 700;
-}
-
-.dividerSec {
-  opacity: 20%;
-  margin-bottom: 40px;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
 }
