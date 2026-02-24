@@ -1,33 +1,44 @@
 import React from "react";
 import axios from "axios";
 
+import { useSelector, useDispatch } from "react-redux";
+
+import { setCategoryId, setCurrentPage } from "../../redux/slices/filterSlice";
+
 import Header from "../../components/Header";
 import Toolbar from "../../components/Toolbar";
 import Card from "../../components/Card";
 import Skeleton from "../../components/Card/Skeleton";
+import Pagination from "../../components/Pagination";
 
 import styles from "./Homepage.module.scss";
 
 import "./Homepage.module.scss";
 
 const Homepage = ({ inputValue, setInputValue }) => {
+  const dispatch = useDispatch();
+  const { categoryId, sort, currentPage } = useSelector((state) => state.filter);
+  const sortType = sort.sortProperty;
+
   const [sortDirection, setSortDirection] = React.useState("asc");
   const [pizzaCatalog, setPizzaCatalog] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  const [activeCategoryIndex, setActiveCategoryIndex] = React.useState(0);
   const [error, setError] = React.useState(null);
 
-  const [activeTypeSort, setActiveTypeSort] = React.useState({
-    name: "популярности",
-    sortProperty: "rating",
-  });
+  const onChangePage = (number) => {
+    dispatch(setCurrentPage(number));
+  };
+
+  const onChangeCategory = (id) => {
+    dispatch(setCategoryId(id));
+  };
 
   const fetchData = async () => {
     setIsLoading(true);
     setError(null);
     try {
       const { data } = await axios.get(
-        `https://698b33a36c6f9ebe57bbf32b.mockapi.io/pizzaCatalog${!activeCategoryIndex ? `?sortBy=${activeTypeSort.sortProperty}&order=${sortDirection}` : `?category=${activeCategoryIndex}&sortBy=${activeTypeSort.sortProperty}&order=${sortDirection}`}`
+        `https://698b33a36c6f9ebe57bbf32b.mockapi.io/pizzaCatalog?page=${currentPage}&limit=4${!categoryId ? `&sortBy=${sort.sortProperty}&order=${sortDirection}&search=${inputValue}` : `&category=${categoryId}&sortBy=${sort.sortProperty}&order=${sortDirection}&search=${inputValue}`}`
       );
 
       setPizzaCatalog(data);
@@ -47,9 +58,10 @@ const Homepage = ({ inputValue, setInputValue }) => {
       window.scrollTo(0, 0);
     }
   };
+
   React.useEffect(() => {
     fetchData();
-  }, [activeCategoryIndex, activeTypeSort, sortDirection]);
+  }, [categoryId, sort.sortProperty, sortDirection, inputValue, currentPage]);
 
   return (
     <>
@@ -57,19 +69,16 @@ const Homepage = ({ inputValue, setInputValue }) => {
         <Toolbar
           sortDirection={sortDirection}
           setSortDirection={setSortDirection}
-          activeCategoryIndex={activeCategoryIndex}
-          setActiveCategoryIndex={(i) => setActiveCategoryIndex(i)}
-          activeTypeSort={activeTypeSort}
-          setActiveTypeSort={(obj) => setActiveTypeSort(obj)}
+          activeCategoryIndex={categoryId}
+          setActiveCategoryIndex={onChangeCategory}
         ></Toolbar>
         <h1 className={styles.title}>Все пиццы</h1>
         <div className="cards">
           {isLoading
             ? [...new Array(6)].map((_, i) => <Skeleton key={i} />)
-            : pizzaCatalog
-                ?.filter((obj) => obj.title.toLowerCase().includes(inputValue.toLowerCase()))
-                .map((value) => <Card key={value.id} {...value} />)}
+            : pizzaCatalog.map((value) => <Card key={value.id} {...value} />)}
         </div>
+        <Pagination currentPage={currentPage} onChangePage={onChangePage} />
       </section>
     </>
   );

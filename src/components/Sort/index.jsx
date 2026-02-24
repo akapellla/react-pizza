@@ -1,13 +1,20 @@
 import styles from "./Sort.module.scss";
 
+import { useSelector, useDispatch } from "react-redux";
+
+import { setSort } from "../../redux/slices/filterSlice";
+
 import React from "react";
 
-const Sort = ({ activeTypeSort, setActiveTypeSort, sortDirection, setSortDirection }) => {
-  const sortType = [
-    { name: "популярности", sortProperty: "rating" },
-    { name: "цене", sortProperty: "price" },
-    { name: "алфавиту", sortProperty: "title" },
-  ];
+const sortType = [
+  { name: "популярности", sortProperty: "rating" },
+  { name: "цене", sortProperty: "price" },
+  { name: "алфавиту", sortProperty: "title" },
+];
+
+const Sort = ({ sortDirection, setSortDirection }) => {
+  const dispatch = useDispatch();
+  const sort = useSelector((state) => state.filter.sort);
 
   const [isVisible, setIsVisible] = React.useState(false);
 
@@ -16,7 +23,7 @@ const Sort = ({ activeTypeSort, setActiveTypeSort, sortDirection, setSortDirecti
   };
 
   const onChangeType = (obj) => {
-    setActiveTypeSort(obj);
+    dispatch(setSort(obj));
     setIsVisible(false);
   };
 
@@ -40,13 +47,13 @@ const Sort = ({ activeTypeSort, setActiveTypeSort, sortDirection, setSortDirecti
         aria-controls="sort-list"
         onClick={() => setIsVisible((prev) => !prev)}
       >
-        {activeTypeSort.name}
+        {sort.name}
       </button>
 
       <ul className={`${styles.sortList} ${isVisible ? styles.visible : ""}`}>
         {sortType.map((value, index) => (
           <li
-            className={`${styles.sortOption} ${activeTypeSort.sortProperty === value.sortProperty ? styles.active : ""}`}
+            className={`${styles.sortOption} ${sort.sortProperty === value.sortProperty ? styles.active : ""}`}
             onClick={() => onChangeType(value)}
           >
             <button className={styles.sortBtn}>{value.name}</button>

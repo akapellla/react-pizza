@@ -9,8 +9,6 @@ const Toolbar = ({
   setSortDirection,
   activeCategoryIndex,
   setActiveCategoryIndex,
-  activeTypeSort,
-  setActiveTypeSort,
 }) => {
   const categories = ["Все", "Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые"];
   return (
@@ -31,12 +29,7 @@ const Toolbar = ({
           })}
         </ul>
       </nav>
-      <Sort
-        activeTypeSort={activeTypeSort}
-        setActiveTypeSort={setActiveTypeSort}
-        sortDirection={sortDirection}
-        setSortDirection={setSortDirection}
-      />
+      <Sort sortDirection={sortDirection} setSortDirection={setSortDirection} />
     </section>
   );
 };
