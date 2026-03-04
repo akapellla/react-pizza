@@ -4,3 +4,30 @@
   font-weight: 700;
   font-size: 32px;
 }
+
+.cards {
+  display: grid;
+  column-gap: 33px;
+  row-gap: 65px;
+  justify-content: start;
+  grid-template-columns: repeat(auto-fit, 280px);
+}
+
+@media (max-width: 1441px) {
+  .cards {
+    justify-content: center;
+  }
+}
+.contentError {
+  margin: 100px auto;
+  width: 500px;
+  text-align: center;
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 20px;
+  }
+}

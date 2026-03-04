@@ -1,14 +1,16 @@
+import React from "react";
+
 import { Outlet, useLocation } from "react-router";
 import Header from "../Header";
 
-const Layout = ({ inputValue, setInputValue }) => {
+const Layout: React.FC = () => {
   const { pathname } = useLocation();
 
   const isCartPage = pathname === "/cart";
 
   return (
     <>
-      <Header showCart={!isCartPage} inputValue={inputValue} setInputValue={setInputValue} />
+      <Header showCart={!isCartPage} />
       <main>
         <Outlet />
       </main>

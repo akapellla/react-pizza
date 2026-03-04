@@ -1,15 +1,20 @@
 import styles from "./Toolbar.module.scss";
-
 import Sort from "../Sort";
-
 import React from "react";
+
+type ToolbarProps = {
+  sortDirection: string;
+  setSortDirection: React.Dispatch<React.SetStateAction<string>>;
+  activeCategoryIndex: number;
+  setActiveCategoryIndex: (id: number) => void;
+};
 
 const Toolbar = ({
   sortDirection,
   setSortDirection,
   activeCategoryIndex,
   setActiveCategoryIndex,
-}) => {
+}: ToolbarProps) => {
   const categories = ["Все", "Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые"];
   return (
     <section className={styles.toolbar}>

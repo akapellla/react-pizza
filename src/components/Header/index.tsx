@@ -4,13 +4,17 @@ import Logo from "../Logo";
 import Cart from "../Cart";
 import Search from "../Search";
 
-const Header = ({ showCart = true, inputValue, setInputValue }) => {
+type HeaderProps = {
+  showCart: boolean;
+};
+
+const Header = ({ showCart = true }: HeaderProps) => {
   return (
     <>
       <header className={`${styles.header}`}>
         <div className={styles.leftHeader}>
           <Logo />
-          {showCart && <Search inputValue={inputValue} setInputValue={setInputValue} />}
+          {showCart && <Search />}
         </div>
         {showCart && <Cart />}
       </header>

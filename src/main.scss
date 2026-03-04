@@ -39,17 +39,3 @@ ul {
   border-radius: 10px;
   padding: 50px 60px;
 }
-
-.cards {
-  display: grid;
-  column-gap: 33px;
-  row-gap: 65px;
-  justify-content: start;
-  grid-template-columns: repeat(auto-fit, 280px);
-}
-
-@media (max-width: 1441px) {
-  .cards {
-    justify-content: center;
-  }
-}

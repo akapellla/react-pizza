@@ -1,10 +1,10 @@
 import styles from "./Logo.module.scss";
-
+import React from "react";
 import { Link } from "react-router";
 
 import mainLogo from "/icons/mainLogo.svg";
 
-const Logo = () => {
+const Logo: React.FC = () => {
   return (
     <>
       <div className={styles.left}>

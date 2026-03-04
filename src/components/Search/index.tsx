@@ -1,21 +1,38 @@
 import styles from "./Search.module.scss";
 import debounce from "lodash.debounce";
-import React from "react";
+import React, { type ChangeEvent } from "react";
+import { useDispatch } from "react-redux";
+import { setSearchValue } from "../../redux/slices/filterSlice";
 
-const Search = ({ inputValue, setInputValue }) => {
+const Search: React.FC = () => {
+  const dispatch = useDispatch();
+
   const [value, setValue] = React.useState("");
-  const inputRef = React.useRef();
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
-  const onChangeInput = (event) => {
+  const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
     updateSearchValue(event.target.value);
   };
-  const updateSearchValue = React.useCallback(
-    debounce((str) => {
-      setInputValue(str);
-    }, 500),
-    []
+  // const updateSearchValue = React.useCallback(
+  //   debounce((str) => {
+  //     dispatch(setSearchValue(str));
+  //   }, 500),
+  //   []
+  // );
+  const updateSearchValue = React.useMemo(
+    () =>
+      debounce((str: string) => {
+        dispatch(setSearchValue(str));
+      }, 500),
+    [dispatch]
   );
+
+  React.useEffect(() => {
+    return () => {
+      updateSearchValue.cancel();
+    };
+  }, [updateSearchValue]);
 
   return (
     <div className={styles.searchBlock}>

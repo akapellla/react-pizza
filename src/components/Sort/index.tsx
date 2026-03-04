@@ -5,16 +5,25 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSort } from "../../redux/slices/filterSlice";
 
 import React from "react";
+import type { RootState } from "../../redux/store";
+import type { SortType } from "../../redux/slices/filterSlice";
 
-const sortType = [
+const sortType: SortType[] = [
   { name: "популярности", sortProperty: "rating" },
   { name: "цене", sortProperty: "price" },
   { name: "алфавиту", sortProperty: "title" },
 ];
 
-const Sort = ({ sortDirection, setSortDirection }) => {
+type SortProps = {
+  sortDirection: string;
+  setSortDirection: React.Dispatch<React.SetStateAction<string>>;
+};
+
+const Sort = ({ sortDirection, setSortDirection }: SortProps) => {
   const dispatch = useDispatch();
-  const sort = useSelector((state) => state.filter.sort);
+  const sort = useSelector((state: RootState) => state.filter.sort);
+
+  const sortRef = React.useRef<HTMLDivElement>(null);
 
   const [isVisible, setIsVisible] = React.useState(false);
 
@@ -22,13 +31,30 @@ const Sort = ({ sortDirection, setSortDirection }) => {
     setSortDirection((prev) => (prev === "asc" ? (prev = "desc") : (prev = "asc")));
   };
 
-  const onChangeType = (obj) => {
+  const onChangeType = (obj: SortType) => {
     dispatch(setSort(obj));
     setIsVisible(false);
   };
 
+  React.useEffect(() => {
+    const handleClickOutisde = (event: MouseEvent) => {
+      if (!sortRef.current) {
+        return;
+      }
+      if (!event.composedPath().includes(sortRef.current)) {
+        setIsVisible(false);
+      }
+    };
+
+    document.body.addEventListener("click", handleClickOutisde);
+
+    return () => {
+      document.body.removeEventListener("click", handleClickOutisde);
+    };
+  }, []);
+
   return (
-    <div className={`${styles.sort}`}>
+    <div ref={sortRef} className={`${styles.sort}`}>
       <div className={`${styles.sortLabel}`}>
         <img
           onClick={onChangeSortDirection}
@@ -51,7 +77,7 @@ const Sort = ({ sortDirection, setSortDirection }) => {
       </button>
 
       <ul className={`${styles.sortList} ${isVisible ? styles.visible : ""}`}>
-        {sortType.map((value, index) => (
+        {sortType.map((value) => (
           <li
             className={`${styles.sortOption} ${sort.sortProperty === value.sortProperty ? styles.active : ""}`}
             onClick={() => onChangeType(value)}
