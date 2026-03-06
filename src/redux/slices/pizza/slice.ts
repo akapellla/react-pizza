@@ -1,25 +1,8 @@
 import { createSlice, createAsyncThunk, type PayloadAction } from "@reduxjs/toolkit";
-import type { SortType } from "./filterSlice";
 import axios from "axios";
 
-type FetchPizzasArgs = {
-  currentPage: number;
-  sort: SortType;
-  sortDirection: string;
-  searchValue: string;
-  categoryId: number;
-};
+import type { FetchPizzasArgs, Pizza } from "./types";
 
-export type Pizza = {
-  id: string;
-  category: number;
-  imageUrl: string;
-  price: number;
-  rating: number;
-  sizes: number[];
-  title: string;
-  types: number[];
-};
 export const fetchPizzas = createAsyncThunk(
   "pizza/fetchPizzas",
   async (params: FetchPizzasArgs) => {

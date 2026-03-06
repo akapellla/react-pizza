@@ -2,8 +2,8 @@ import React from "react";
 
 import { useSelector } from "react-redux";
 
-import { setCategoryId, setCurrentPage } from "../../redux/slices/filterSlice";
-import { fetchPizzas } from "../../redux/slices/pizzaSlice";
+import { setCategoryId, setCurrentPage } from "../../redux/slices/filter/slice";
+import { fetchPizzas } from "../../redux/slices/pizza/slice";
 
 import Toolbar from "../../components/Toolbar";
 import Card from "../../components/Card";
@@ -21,8 +21,9 @@ const Homepage: React.FC = () => {
   const { categoryId, sort, currentPage, searchValue } = useSelector(
     (state: RootState) => state.filter
   );
+
   const { items, status } = useSelector((state: RootState) => state.pizza);
-  console.log(items);
+
   const [sortDirection, setSortDirection] = React.useState("asc");
 
   const onChangePage = (number: number) => {

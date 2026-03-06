@@ -2,11 +2,11 @@ import styles from "./Sort.module.scss";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { setSort } from "../../redux/slices/filterSlice";
+import { setSort } from "../../redux/slices/filter/slice";
 
 import React from "react";
 import type { RootState } from "../../redux/store";
-import type { SortType } from "../../redux/slices/filterSlice";
+import type { SortType } from "../../redux/slices/filter/slice";
 
 const sortType: SortType[] = [
   { name: "популярности", sortProperty: "rating" },

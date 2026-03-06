@@ -1,17 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-export type SortType = {
-  name: "популярности" | "цене" | "алфавиту";
-  sortProperty: "rating" | "title" | "price";
-};
-
-interface filterSliceState {
-  categoryId: number;
-  currentPage: number;
-  searchValue: string;
-  sort: SortType;
-}
-
+import type { SortType, filterSliceState } from "./types";
 const initialState: filterSliceState = {
   categoryId: 0,
   currentPage: 1,

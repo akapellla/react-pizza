@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "./Card.module.scss";
-import { addItem, type CartItem } from "../../redux/slices/cartSlice";
+import { addItem } from "../../redux/slices/cart/slice";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../redux/store";
+import type { CartItem } from "../../redux/slices/cart/types";
 
-import type { Pizza } from "../../redux/slices/pizzaSlice";
+import type { Pizza } from "../../redux/slices/pizza/types";
 import { Link } from "react-router-dom";
 
 const Card = ({ id, title, imageUrl, price, sizes, types }: Pizza) => {

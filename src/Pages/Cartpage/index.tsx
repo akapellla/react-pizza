@@ -1,12 +1,12 @@
 import CartItem from "../../components/CartItem";
-import { clearItems } from "../../redux/slices/cartSlice";
+import { clearItems } from "../../redux/slices/cart/slice";
 import styles from "./Cartpage.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import CartEmpty from "../../components/CartEmpty";
 
 import { Link } from "react-router";
 import type { RootState } from "../../redux/store";
-import type { CardItem } from "../../redux/slices/cartSlice";
+import type { CartItem as CartItemType } from "../../redux/slices/cart/types";
 
 const Cartpage = () => {
   const { items, totalPrice } = useSelector((state: RootState) => state.cart);
@@ -43,7 +43,9 @@ const Cartpage = () => {
           <div className={styles.cartTopDesc}>
             <p>
               Всего пицц:{" "}
-              <span>{items.reduce((sum: number, item: CardItem) => sum + item.count, 0)} шт.</span>
+              <span>
+                {items.reduce((sum: number, item: CartItemType) => sum + item.count, 0)} шт.
+              </span>
             </p>
             <p className={styles.priceBlock}>
               Сумма заказа: <span className={styles.cartPrice}>{totalPrice} руб.</span>

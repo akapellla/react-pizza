@@ -2,6 +2,8 @@ import { useParams, useNavigate } from "react-router";
 import React from "react";
 import axios from "axios";
 
+import styles from "./FullPizzaPage.module.scss";
+
 const FullPizzaPage: React.FC = () => {
   const [pizza, setPizza] = React.useState<Data>();
   const { id } = useParams();
@@ -35,10 +37,12 @@ const FullPizzaPage: React.FC = () => {
   }
 
   return (
-    <section>
+    <section className={styles.fullPizzaBlock}>
       <img src={pizza.imageUrl} alt="" />
-      <h2>{pizza.title}</h2>
-      <h4>{pizza.price}</h4>
+      <div className={styles.pizzaInfo}>
+        <h2>Пицца {pizza.title}</h2>
+        <p>Цена: {pizza.price} руб.</p>
+      </div>
     </section>
   );
 };
