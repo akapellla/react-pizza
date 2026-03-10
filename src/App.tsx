@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router";
 import React from "react";
 import Homepage from "./Pages/Homepage";
 import Layout from "./components/Layout";
+import OrderSuccessPage from "./Pages/OrderSuccessPage";
 
 const Cartpage = React.lazy(() => import("./Pages/Cartpage"));
 const NotFoundpage = React.lazy(() => import("./Pages/NotFoundpage"));
@@ -29,6 +30,14 @@ function App() {
                 element={
                   <React.Suspense fallback={<div>Идет загрузка страницы товара...</div>}>
                     <FullPizzaPage />
+                  </React.Suspense>
+                }
+              />
+              <Route
+                path="order-success"
+                element={
+                  <React.Suspense fallback={<div>Идет загрузка...</div>}>
+                    <OrderSuccessPage />
                   </React.Suspense>
                 }
               />

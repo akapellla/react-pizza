@@ -15,7 +15,7 @@ const Toolbar = ({
   activeCategoryIndex,
   setActiveCategoryIndex,
 }: ToolbarProps) => {
-  const categories = ["Все", "Мясные", "Вегетарианская", "Гриль", "Острые", "Закрытые"];
+  const categories = ["Все", "Мясные", "Вегетарианские", "Гриль", "Острые", "Закрытые"];
   return (
     <section className={styles.toolbar}>
       <nav className={styles.categories}>

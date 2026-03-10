@@ -59,9 +59,11 @@ const Cartpage = () => {
                 Вернуться назад
               </button>
             </Link>
-            <a href="">
-              <button className={styles.confirmBtn}>Оплатить сейчас</button>
-            </a>
+            <Link to="/order-success">
+              <button className={styles.confirmBtn} onClick={() => dispatch(clearItems())}>
+                Оплатить сейчас
+              </button>
+            </Link>
           </div>
         </div>
       </section>
