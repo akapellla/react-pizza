@@ -9,13 +9,10 @@ import React from "react";
 
 const Cart = () => {
   const { items, totalPrice } = useSelector((state: RootState) => state.cart);
-  const isMounted = React.useRef(false);
+
   React.useEffect(() => {
-    if (isMounted.current) {
-      const json = JSON.stringify(items);
-      localStorage.setItem("cart", json);
-    }
-    isMounted.current = true;
+    const json = JSON.stringify(items);
+    localStorage.setItem("cart", json);
   }, [items]);
 
   return (
