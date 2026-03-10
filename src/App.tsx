@@ -1,11 +1,12 @@
 import "./main.scss";
 import { Routes, Route } from "react-router";
-
+import React from "react";
 import Homepage from "./Pages/Homepage";
 import Layout from "./components/Layout";
-import Cartpage from "./Pages/Cartpage";
-import NotFoundpage from "./Pages/NotFoundpage";
-import FullPizzaPage from "./Pages/FullPizzaPage";
+
+const Cartpage = React.lazy(() => import("./Pages/Cartpage"));
+const NotFoundpage = React.lazy(() => import("./Pages/NotFoundpage"));
+const FullPizzaPage = React.lazy(() => import("./Pages/FullPizzaPage"));
 
 function App() {
   return (
@@ -15,9 +16,30 @@ function App() {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Homepage />} />
-              <Route path="cart" element={<Cartpage />} />
-              <Route path="pizza/:id" element={<FullPizzaPage />} />
-              <Route path="*" element={<NotFoundpage />} />
+              <Route
+                path="cart"
+                element={
+                  <React.Suspense fallback={<div>Идет загрузка корзины...</div>}>
+                    <Cartpage />
+                  </React.Suspense>
+                }
+              />
+              <Route
+                path="pizza/:id"
+                element={
+                  <React.Suspense fallback={<div>Идет загрузка страницы товара...</div>}>
+                    <FullPizzaPage />
+                  </React.Suspense>
+                }
+              />
+              <Route
+                path="*"
+                element={
+                  <React.Suspense fallback={<div>Идет загрузка страницы...</div>}>
+                    <NotFoundpage />
+                  </React.Suspense>
+                }
+              />
             </Route>
           </Routes>
         </div>

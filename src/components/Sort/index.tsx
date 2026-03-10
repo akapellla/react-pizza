@@ -6,7 +6,7 @@ import { setSort } from "../../redux/slices/filter/slice";
 
 import React from "react";
 import type { RootState } from "../../redux/store";
-import type { SortType } from "../../redux/slices/filter/slice";
+import type { SortType } from "../../redux/slices/filter/types";
 
 const sortType: SortType[] = [
   { name: "популярности", sortProperty: "rating" },
